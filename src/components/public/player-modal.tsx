@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { Player } from "@/features/players/types";
-import { POSITION_LABELS } from "@/features/players/constants";
+import { ROLE_LABELS, POSITION_LABELS } from "@/features/players/constants";
 import { X, User } from "lucide-react";
 import Image from "next/image";
 
@@ -68,7 +68,7 @@ export default function PlayerModal({ player, onClose }: PlayerModalProps) {
           <div className="p-6 flex flex-col justify-between space-y-6">
             <div>
               <span className="text-xs text-primary font-bold uppercase tracking-wider">
-                {player.position ? POSITION_LABELS[player.position] : "Cuerpo Técnico"}
+                {ROLE_LABELS[player.role]}
               </span>
               <h3 className="font-bebas text-4xl text-white tracking-[1px] mt-1">
                 {player.name}
