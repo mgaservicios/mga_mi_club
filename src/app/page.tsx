@@ -206,19 +206,21 @@ export default async function HomePage() {
                 <div className="flex items-center justify-center lg:justify-start gap-3 text-zinc-300">
                   <Calendar className="w-4 h-4 text-primary" />
                   <span className="font-sans text-sm font-semibold uppercase tracking-wider">
-                    {new Date(nextMatch.date).toLocaleDateString("es-CO", {
+                    {new Date(nextMatch.date).toLocaleDateString("es-AR", {
                       day: "numeric",
                       month: "short",
                       year: "numeric",
+                      timeZone: "America/Argentina/Buenos_Aires",
                     })}
                   </span>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start gap-3 text-zinc-300">
                   <Clock className="w-4 h-4 text-primary" />
                   <span className="font-sans text-sm font-semibold uppercase tracking-wider">
-                    {new Date(nextMatch.date).toLocaleTimeString("es-CO", {
+                    {new Date(nextMatch.date).toLocaleTimeString("es-AR", {
                       hour: "2-digit",
                       minute: "2-digit",
+                      timeZone: "America/Argentina/Buenos_Aires",
                     })} HS
                   </span>
                 </div>

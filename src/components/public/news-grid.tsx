@@ -43,10 +43,11 @@ export default function NewsGrid({ news }: NewsGridProps) {
             )}
             <div className="p-6 space-y-3">
               <span className="text-xs text-zinc-500 font-medium">
-                {new Date(item.created_at).toLocaleDateString("es-CO", {
+                {new Date(item.created_at).toLocaleDateString("es-AR", {
                   day: "numeric",
                   month: "short",
                   year: "numeric",
+                  timeZone: "America/Argentina/Buenos_Aires",
                 })}
               </span>
               <h4 className="font-bebas text-2xl text-white tracking-[1px] line-clamp-2 group-hover:text-primary transition-colors">

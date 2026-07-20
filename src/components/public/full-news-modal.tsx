@@ -76,10 +76,11 @@ export default function FullNewsModal({ news, onClose }: FullNewsModalProps) {
                     )}
                     <div className="p-4 space-y-2">
                       <span className="text-[10px] text-zinc-500 font-medium">
-                        {new Date(item.created_at).toLocaleDateString("es-CO", {
+                        {new Date(item.created_at).toLocaleDateString("es-AR", {
                           day: "numeric",
                           month: "short",
                           year: "numeric",
+                          timeZone: "America/Argentina/Buenos_Aires",
                         })}
                       </span>
                       <h4 className="font-bebas text-xl text-white tracking-[1px] line-clamp-2 group-hover:text-primary transition-colors">

@@ -69,12 +69,13 @@ export default function AdminMatchesClient({
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
-    return date.toLocaleDateString("es-CO", {
+    return date.toLocaleDateString("es-AR", {
       day: "numeric",
       month: "short",
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      timeZone: "America/Argentina/Buenos_Aires",
     });
   };
 

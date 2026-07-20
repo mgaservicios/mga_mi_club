@@ -101,10 +101,11 @@ export default function AdminGalleryClient({
   const formatDate = (dateStr: string | null) => {
     if (!dateStr) return null;
     const date = new Date(dateStr + "T00:00:00");
-    return date.toLocaleDateString("es-CO", {
+    return date.toLocaleDateString("es-AR", {
       day: "numeric",
       month: "short",
       year: "numeric",
+      timeZone: "America/Argentina/Buenos_Aires",
     });
   };
 

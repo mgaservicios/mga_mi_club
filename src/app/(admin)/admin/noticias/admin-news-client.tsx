@@ -47,10 +47,11 @@ export default function AdminNewsClient({ teamId, initialNews }: AdminNewsClient
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
-    return date.toLocaleDateString("es-CO", {
+    return date.toLocaleDateString("es-AR", {
       day: "numeric",
       month: "short",
       year: "numeric",
+      timeZone: "America/Argentina/Buenos_Aires",
     });
   };
 

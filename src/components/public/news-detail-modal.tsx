@@ -46,6 +46,7 @@ export default function NewsDetailModal({ news, onClose }: NewsDetailModalProps)
         year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
+        timeZone: "America/Argentina/Buenos_Aires",
       })
     );
   }, [news.created_at]);
