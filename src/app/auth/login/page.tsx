@@ -39,7 +39,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#0B0B0B] px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8 bg-[#111111]/50 p-8 rounded-2xl border border-white/10 backdrop-blur-md">
+      <div className="w-full max-w-md space-y-8 bg-[#111111]/50 p-8 rounded-2xl border border-white/10">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold tracking-tight text-white">
             STREET DOGS

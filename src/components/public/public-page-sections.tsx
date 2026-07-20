@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock, Users, Trophy, Heart } from "lucide-react";
 import { Match } from "@/features/matches/types";
 import { News } from "@/features/news/types";
 import { GalleryImage } from "@/features/gallery/types";
@@ -56,8 +56,8 @@ export default function PublicPageSections({
       {/* EQUIPO SECTION */}
       <section id="equipo" className="relative py-24 overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" />
-          <Image src="/fondos/fondoequipo.png" alt="Equipo Background" fill className="object-cover opacity-40" unoptimized />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 z-10" />
+          <Image src="/fondos/fondoequipo.png" alt="Equipo Background" fill className="object-cover opacity-100 blur-[2px]" unoptimized />
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
@@ -74,8 +74,8 @@ export default function PublicPageSections({
       {/* PARTIDOS SECTION */}
       <section id="partidos" className="relative py-24 overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" />
-          <Image src="/fondos/fondopartidos.png" alt="Partidos Background" fill className="object-cover opacity-40" unoptimized />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 z-10" />
+          <Image src="/fondos/fondopartidos.png" alt="Partidos Background" fill className="object-cover opacity-100 blur-[2px]" unoptimized />
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
@@ -110,8 +110,8 @@ export default function PublicPageSections({
       {/* GALERIA SECTION */}
       <section id="galeria" className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" />
-          <Image src="/fondos/fondogaleria.png" alt="Galería Background" fill className="object-cover opacity-40" unoptimized />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 z-10" />
+          <Image src="/fondos/fondogaleria.png" alt="Galería Background" fill className="object-cover opacity-100 blur-[2px]" unoptimized />
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
@@ -156,8 +156,8 @@ export default function PublicPageSections({
       {/* NOTICIAS SECTION */}
       <section id="noticias" className="relative py-24 overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" />
-          <Image src="/fondos/fondonoticias.png" alt="Noticias Background" fill className="object-cover opacity-40" unoptimized />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 z-10" />
+          <Image src="/fondos/fondonoticias.png" alt="Noticias Background" fill className="object-cover opacity-100 blur-[2px]" unoptimized />
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">

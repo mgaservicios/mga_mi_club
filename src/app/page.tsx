@@ -12,7 +12,7 @@ import Navbar from "@/components/public/navbar";
 import HistoriaSection from "@/components/public/historia-section";
 import PublicPageSections from "@/components/public/public-page-sections";
 
-import { Calendar, MapPin, Trophy, ArrowRight, Star, Users, Heart, Clock } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Clock, Users, Trophy, Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -118,32 +118,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <section className="relative z-30 bg-[#101010]/80 border-y border-white/5 backdrop-blur-md py-8">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div className="flex flex-col items-center gap-2">
-            <Trophy className="w-6 h-6 text-primary" />
-            <span className="font-bebas text-xl tracking-[1px] text-white">+10 AÑOS JUNTOS</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <Users className="w-6 h-6 text-primary" />
-            <span className="font-bebas text-xl tracking-[1px] text-white">+20 JUGADORES</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <Trophy className="w-6 h-6 text-primary" />
-            <span className="font-bebas text-xl tracking-[1px] text-white">TORNEOS LOCALES</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <Heart className="w-6 h-6 text-primary" />
-            <span className="font-bebas text-xl tracking-[1px] text-white">UNA SOLA PASIÓN</span>
-          </div>
-        </div>
-      </section>
-
       {/* PRÓXIMO PARTIDO SECTION */}
       {nextMatch && (
-        <section id="proximo-partido" className="relative z-20 max-w-5xl mx-auto px-6 mt-6 scroll-mt-24">
-          <div className="bg-[#101010]/90 border border-primary/30 rounded-2xl p-6 sm:p-8 shadow-[0_0_30px_rgba(200,16,46,0.2)] backdrop-blur-md relative overflow-hidden">
+        <section id="proximo-partido" className="relative z-20 max-w-5xl mx-auto px-6 mt-12 mb-12 scroll-mt-24">
+            <div className="bg-[#101010]/90 border border-primary/30 rounded-2xl p-6 sm:p-8 shadow-[0_0_30px_rgba(200,16,46,0.2)] relative overflow-hidden">
             {/* Red Accent Line */}
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-primary" />
 
@@ -256,12 +234,12 @@ Más que un equipo, somos una familia que disfruta competir y compartir cada mom
       {standings.length > 0 && (
         <section className="relative py-24 overflow-hidden border-y border-white/5">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/95 to-[#050505] z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 z-10" />
             <Image
               src="/fondos/fondopartidos.png"
               alt="Posiciones Background"
               fill
-              className="object-cover opacity-10"
+              className="object-cover opacity-100 blur-[2px]"
               unoptimized
             />
           </div>
@@ -327,7 +305,7 @@ Más que un equipo, somos una familia que disfruta competir y compartir cada mom
 
 
       {/* FOOTER */}
-      <footer className="relative bg-[#050505] border-t border-white/5 py-8 text-center space-y-4 overflow-hidden">
+      <footer className="relative bg-[#101010]/80 border-t border-white/5 py-8 text-center space-y-4 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black z-10" />
@@ -339,28 +317,38 @@ Más que un equipo, somos una familia que disfruta competir y compartir cada mom
             unoptimized
           />
         </div>
-        <div className="relative z-20 max-w-7xl mx-auto px-6 flex flex-col items-center space-y-3">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 flex flex-col items-center space-y-6">
           <Image
             src="/fondos/frase.png"
             alt="Frase Street Dogs"
-            width={250}
-            height={60}
+            width={180}
+            height={45}
             className="object-contain"
             unoptimized
           />
 
-          {/* Redes Sociales */}
-          <div className="flex justify-center gap-4">
-            <a
-              href="https://www.instagram.com/basketball_street_dogs/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-white/5 hover:bg-primary hover:text-white text-zinc-400 rounded-full transition-all border border-white/10"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4.162 4.162 0 110-8.324 4.162 4.162 0 010 8.324zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-              </svg>
-            </a>
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="flex flex-col items-center gap-1">
+              <Clock className="w-4 h-4 text-primary" />
+              <span className="font-bebas text-base tracking-[1px] text-white">+10 AÑOS JUNTOS</span>
+              <span className="text-[10px] text-zinc-400 font-medium tracking-wider">Haciendo historia</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <Users className="w-4 h-4 text-primary" />
+              <span className="font-bebas text-base tracking-[1px] text-white">+30 JUGADORES</span>
+              <span className="text-[10px] text-zinc-400 font-medium tracking-wider">Comprometidos con el equipo</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <Trophy className="w-4 h-4 text-primary" />
+              <span className="font-bebas text-base tracking-[1px] text-white">TORNEOS LOCALES</span>
+              <span className="text-[10px] text-zinc-400 font-medium tracking-wider">Participando en ligas locales</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <Heart className="w-4 h-4 text-primary" />
+              <span className="font-bebas text-base tracking-[1px] text-white">UNA SOLA PASIÓN</span>
+              <span className="text-[10px] text-zinc-400 font-medium tracking-wider">Por este deporte cada día</span>
+            </div>
           </div>
 
           <p className="text-[10px] text-zinc-600">

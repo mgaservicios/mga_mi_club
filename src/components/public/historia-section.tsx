@@ -34,12 +34,12 @@ Y esta historia todavía tiene muchos capítulos por jugar.`;
     <>
       <section id="historia" className="relative py-24 overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20 z-10" />
           <Image
             src="/fondos/fondohistoria.png"
             alt="Historia Background"
             fill
-            className="object-cover opacity-40"
+            className="object-cover opacity-100 blur-[2px]"
             unoptimized
           />
         </div>
