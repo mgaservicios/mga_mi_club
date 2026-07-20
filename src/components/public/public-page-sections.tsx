@@ -7,6 +7,7 @@ import { Match } from "@/features/matches/types";
 import { News } from "@/features/news/types";
 import { GalleryImage } from "@/features/gallery/types";
 import { Album } from "@/features/gallery/album-types";
+import ImageLightbox from "@/components/image-lightbox";
 import MatchesGrid from "./matches-grid";
 import PlayersGrid from "./players-grid";
 import NewsGrid from "./news-grid";
@@ -42,6 +43,7 @@ export default function PublicPageSections({
   const [showGalleryModal, setShowGalleryModal] = useState(false);
   const [showMatchesModal, setShowMatchesModal] = useState(false);
   const [showNewsModal, setShowNewsModal] = useState(false);
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   const recentMatches = Object.fromEntries(
     Object.entries(groupedMatches).map(([key, vals]) => [key, vals.slice(0, 4)])
@@ -126,9 +128,13 @@ export default function PublicPageSections({
             <>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
                 {previewImages.map((img) => (
-                  <div key={img.id} className="relative aspect-square rounded-xl overflow-hidden border border-white/10 bg-zinc-900">
+                  <button
+                    key={img.id}
+                    onClick={() => setLightboxSrc(img.image_url)}
+                    className="relative aspect-square rounded-xl overflow-hidden border border-white/10 bg-zinc-900 cursor-pointer hover:ring-2 hover:ring-primary/50 transition-all"
+                  >
                     <Image src={img.image_url} alt={img.title} fill className="object-cover" unoptimized />
-                  </div>
+                  </button>
                 ))}
               </div>
               {images.length > 6 && (
@@ -189,6 +195,7 @@ export default function PublicPageSections({
       {showGalleryModal && <FullGalleryModal images={images} albums={albums} onClose={() => setShowGalleryModal(false)} />}
       {showMatchesModal && <FullMatchesModal groupedMatches={groupedMatches} championshipMap={championshipMap} rivalMap={rivalMap} onClose={() => setShowMatchesModal(false)} />}
       {showNewsModal && <FullNewsModal news={news} onClose={() => setShowNewsModal(false)} />}
+      {lightboxSrc && <ImageLightbox src={lightboxSrc} alt="Foto de galería" onClose={() => setLightboxSrc(null)} />}
     </>
   );
 }

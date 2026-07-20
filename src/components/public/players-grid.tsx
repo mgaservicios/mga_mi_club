@@ -30,7 +30,7 @@ export default function PlayersGrid({ players }: PlayersGridProps) {
             <div
               key={player.id}
               onClick={() => setSelectedPlayer(player)}
-              className="bg-[#101010] border border-white/8 rounded-lg overflow-hidden cursor-pointer group hover:-translate-y-1 hover:border-primary/50 hover:shadow-md hover:shadow-primary/5 transition-all duration-300 flex flex-col justify-between h-[170px]"
+              className="bg-[#101010] border border-white/8 rounded-lg overflow-hidden cursor-pointer group hover:-translate-y-1 hover:border-primary/50 hover:shadow-md hover:shadow-primary/5 transition-all duration-300 flex flex-col justify-between h-[190px]"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-zinc-900 flex-1">
                 {player.photo_url ? (
@@ -57,9 +57,34 @@ export default function PlayersGrid({ players }: PlayersGridProps) {
                 <h4 className="font-bebas text-xs text-white tracking-[0.5px] truncate group-hover:text-primary transition-colors">
                   {player.name}
                 </h4>
-                <p className="text-[8px] text-zinc-400 mt-0.5">
-                  {player.position ? POSITION_LABELS[player.position] : "Jugador"}
-                </p>
+                <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                  {player.position && (
+                    <p className="text-[8px] text-zinc-400">
+                      {POSITION_LABELS[player.position]}
+                    </p>
+                  )}
+                  {player.birth_date && (
+                    <>
+                      <span className="text-[8px] text-zinc-600">•</span>
+                      <p className="text-[8px] text-zinc-400">
+                        {(() => {
+                          const birth = new Date(player.birth_date);
+                          const today = new Date();
+                          let age = today.getFullYear() - birth.getFullYear();
+                          const m = today.getMonth() - birth.getMonth();
+                          if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+                          return age >= 0 ? `${age} años` : "";
+                        })()}
+                      </p>
+                    </>
+                  )}
+                  {player.height_cm && (
+                    <>
+                      <span className="text-[8px] text-zinc-600">•</span>
+                      <p className="text-[8px] text-zinc-400">{player.height_cm}cm</p>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           ))}

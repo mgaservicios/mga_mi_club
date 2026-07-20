@@ -92,33 +92,44 @@ export default function PlayerModal({ player, onClose }: PlayerModalProps) {
               )}
             </div>
 
-            {/* Estadísticas */}
+            {/* Información del Jugador */}
             {player.role === "player" && (
               <div className="border-t border-white/10 pt-6">
                 <h4 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-3">
-                  Estadísticas de Temporada
+                  Información
                 </h4>
-                <div className="grid grid-cols-5 gap-2 text-center">
-                  <div className="bg-white/5 border border-white/5 rounded-lg p-2">
-                    <span className="block text-[10px] text-zinc-500 font-bold">PTS</span>
-                    <span className="text-lg font-bebas text-white">{player.points}</span>
-                  </div>
-                  <div className="bg-white/5 border border-white/5 rounded-lg p-2">
-                    <span className="block text-[10px] text-zinc-500 font-bold">REB</span>
-                    <span className="text-lg font-bebas text-white">{player.rebounds}</span>
-                  </div>
-                  <div className="bg-white/5 border border-white/5 rounded-lg p-2">
-                    <span className="block text-[10px] text-zinc-500 font-bold">AST</span>
-                    <span className="text-lg font-bebas text-white">{player.assists}</span>
-                  </div>
-                  <div className="bg-white/5 border border-white/5 rounded-lg p-2">
-                    <span className="block text-[10px] text-zinc-500 font-bold">ROB</span>
-                    <span className="text-lg font-bebas text-white">{player.steals}</span>
-                  </div>
-                  <div className="bg-white/5 border border-white/5 rounded-lg p-2">
-                    <span className="block text-[10px] text-zinc-500 font-bold">MIN</span>
-                    <span className="text-lg font-bebas text-white">{player.minutes}</span>
-                  </div>
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  {player.birth_date && (
+                    <div className="bg-white/5 border border-white/5 rounded-lg p-2">
+                      <span className="block text-[10px] text-zinc-500 font-bold">EDAD</span>
+                      <span className="text-lg font-bebas text-white">
+                        {(() => {
+                          const birth = new Date(player.birth_date);
+                          const today = new Date();
+                          let age = today.getFullYear() - birth.getFullYear();
+                          const m = today.getMonth() - birth.getMonth();
+                          if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+                          return age >= 0 ? age : "—";
+                        })()}
+                      </span>
+                    </div>
+                  )}
+                  {player.position && (
+                    <div className="bg-white/5 border border-white/5 rounded-lg p-2">
+                      <span className="block text-[10px] text-zinc-500 font-bold">POSICIÓN</span>
+                      <span className="text-sm font-bebas text-white tracking-wide">
+                        {POSITION_LABELS[player.position]}
+                      </span>
+                    </div>
+                  )}
+                  {player.height_cm && (
+                    <div className="bg-white/5 border border-white/5 rounded-lg p-2">
+                      <span className="block text-[10px] text-zinc-500 font-bold">ALTURA</span>
+                      <span className="text-lg font-bebas text-white">
+                        {player.height_cm}<span className="text-xs text-zinc-400 ml-0.5">cm</span>
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
