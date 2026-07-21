@@ -69,7 +69,7 @@ export default async function HomePage() {
       <Navbar logoUrl={team.logo_url} />
 
       {/* HERO SECTION */}
-      <section id="home" className="relative h-screen flex items-end justify-start overflow-hidden px-6 sm:px-12 lg:px-24 pb-48">
+      <section id="home" className="relative h-screen flex items-end justify-center overflow-hidden px-6 sm:px-12 lg:px-24 pb-32">
         {/* Background Image with Cinematic Red/Black Overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent z-10" />
@@ -84,12 +84,12 @@ export default async function HomePage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 max-w-3xl text-left space-y-6 animate-fade-in-up">
-          <p className="font-sans text-2xl sm:text-4xl tracking-[3px] font-black uppercase drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] animate-digital-text">
+        <div className="relative z-20 max-w-3xl text-center space-y-6 animate-fade-in-up">
+          <p className="font-sans text-lg sm:text-2xl tracking-[3px] font-black uppercase drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] animate-digital-text">
             <span className="text-white">MÁS QUE UN EQUIPO, </span>
-            <span className="shimmer-text">UNA FAMILIA.</span>
+            <span className="shimmer-text">UNA FAMILIA</span>
           </p>
-          <div className="pt-4 flex flex-wrap gap-4">
+          <div className="pt-4 flex flex-wrap gap-4 justify-center">
             <a
               href="#equipo"
               className="inline-flex items-center gap-2 px-8 py-3 border-2 border-primary hover:bg-primary text-white font-bold rounded-full transition-all shadow-[0_0_15px_rgba(200,16,46,0.3)] text-xs tracking-wider uppercase"
