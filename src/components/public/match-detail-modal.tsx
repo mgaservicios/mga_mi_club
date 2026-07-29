@@ -59,12 +59,12 @@ export default function MatchDetailModal({ match, onClose }: MatchDetailModalPro
     return parseInt(parts[0]) > parseInt(parts[1]);
   })() : null;
 
-  const allImages = [match.image_url, ...match.images].filter(Boolean) as string[];
+  const allImages = [match.image_url, ...(match.images ?? [])].filter(Boolean) as string[];
 
   return (
     <>
       <div
-        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4 pt-24 sm:p-8 sm:pt-24"
+        className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/95 p-4 pt-24 sm:p-8 sm:pt-24"
         onClick={onClose}
       >
         <div
@@ -162,7 +162,7 @@ export default function MatchDetailModal({ match, onClose }: MatchDetailModalPro
 
       {lightboxImg && (
         <div
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/98 p-4 cursor-zoom-out"
+          className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/98 p-4 cursor-zoom-out"
           onClick={() => setLightboxImg(null)}
         >
           <button
