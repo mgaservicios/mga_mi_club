@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, Trophy } from "lucide-react";
 import { Match } from "@/features/matches/types";
+import MatchDetailModal from "./match-detail-modal";
 
 interface FullMatchesModalProps {
   groupedMatches: Record<string, Match[]>;
@@ -30,6 +31,7 @@ function ClientDateModal({ dateStr }: { dateStr: string }) {
 }
 
 export default function FullMatchesModal({ groupedMatches, championshipMap, rivalMap, onClose }: FullMatchesModalProps) {
+  const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
   useEffect(() => {
     document.body.style.overflow = "hidden";
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -43,6 +45,7 @@ export default function FullMatchesModal({ groupedMatches, championshipMap, riva
   }, [onClose]);
 
   return (
+    <>
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4 pt-24 sm:p-8 sm:pt-24"
       onClick={onClose}
@@ -85,7 +88,8 @@ export default function FullMatchesModal({ groupedMatches, championshipMap, riva
                     return (
                       <div
                         key={match.id}
-                        className={`bg-[#0a0a0a] border rounded-lg overflow-hidden flex items-center gap-3 p-3 ${
+                        onClick={() => setSelectedMatch(match)}
+                        className={`bg-[#0a0a0a] border rounded-lg overflow-hidden flex items-center gap-3 p-3 hover:border-primary/30 transition-all duration-300 cursor-pointer ${
                           isWon === true ? "border-emerald-500/30" : isWon === false ? "border-red-500/30" : "border-white/8"
                         }`}
                       >
@@ -128,5 +132,10 @@ export default function FullMatchesModal({ groupedMatches, championshipMap, riva
         </div>
       </div>
     </div>
+
+    {selectedMatch && (
+      <MatchDetailModal match={selectedMatch} onClose={() => setSelectedMatch(null)} />
+    )}
+    </>
   );
 }
