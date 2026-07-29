@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import { X, Trophy } from "lucide-react";
 import { Match } from "@/features/matches/types";
-import MatchDetailModal from "./match-detail-modal";
 
 interface FullMatchesModalProps {
   groupedMatches: Record<string, Match[]>;
   championshipMap: Record<string, string>;
   rivalMap?: Record<string, { name: string; logo_url: string | null; location: string | null }>;
   onClose: () => void;
+  onSelectMatch?: (match: Match) => void;
 }
 
 function ClientDateModal({ dateStr }: { dateStr: string }) {
@@ -30,8 +30,7 @@ function ClientDateModal({ dateStr }: { dateStr: string }) {
   return <span className="text-xs text-zinc-500">{formatted}</span>;
 }
 
-export default function FullMatchesModal({ groupedMatches, championshipMap, rivalMap, onClose }: FullMatchesModalProps) {
-  const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
+export default function FullMatchesModal({ groupedMatches, championshipMap, rivalMap, onClose, onSelectMatch }: FullMatchesModalProps) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -45,7 +44,6 @@ export default function FullMatchesModal({ groupedMatches, championshipMap, riva
   }, [onClose]);
 
   return (
-    <>
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4 pt-24 sm:p-8 sm:pt-24"
       onClick={onClose}
@@ -88,7 +86,7 @@ export default function FullMatchesModal({ groupedMatches, championshipMap, riva
                     return (
                       <div
                         key={match.id}
-                        onClick={() => setSelectedMatch(match)}
+                        onClick={() => onSelectMatch?.(match)}
                         className={`bg-[#0a0a0a] border rounded-lg overflow-hidden flex items-center gap-3 p-3 hover:border-primary/30 transition-all duration-300 cursor-pointer ${
                           isWon === true ? "border-emerald-500/30" : isWon === false ? "border-red-500/30" : "border-white/8"
                         }`}
@@ -132,10 +130,5 @@ export default function FullMatchesModal({ groupedMatches, championshipMap, riva
         </div>
       </div>
     </div>
-
-    {selectedMatch && (
-      <MatchDetailModal match={selectedMatch} onClose={() => setSelectedMatch(null)} />
-    )}
-    </>
   );
 }

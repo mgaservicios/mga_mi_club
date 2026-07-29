@@ -15,6 +15,7 @@ import HistoryModal from "./history-modal";
 import FullGalleryModal from "./full-gallery-modal";
 import FullMatchesModal from "./full-matches-modal";
 import FullNewsModal from "./full-news-modal";
+import MatchDetailModal from "./match-detail-modal";
 
 interface PublicPageSectionsProps {
   teamHistory: string;
@@ -44,6 +45,7 @@ export default function PublicPageSections({
   const [showMatchesModal, setShowMatchesModal] = useState(false);
   const [showNewsModal, setShowNewsModal] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
 
   const recentMatches = Object.fromEntries(
     Object.entries(groupedMatches).map(([key, vals]) => [key, vals.slice(0, 4)])
@@ -193,9 +195,12 @@ export default function PublicPageSections({
 
       {showHistoryModal && <HistoryModal history={teamHistory} onClose={() => setShowHistoryModal(false)} />}
       {showGalleryModal && <FullGalleryModal images={images} albums={albums} onClose={() => setShowGalleryModal(false)} />}
-      {showMatchesModal && <FullMatchesModal groupedMatches={groupedMatches} championshipMap={championshipMap} rivalMap={rivalMap} onClose={() => setShowMatchesModal(false)} />}
+      {showMatchesModal && <FullMatchesModal groupedMatches={groupedMatches} championshipMap={championshipMap} rivalMap={rivalMap} onClose={() => setShowMatchesModal(false)} onSelectMatch={(match) => setSelectedMatch(match)} />}
       {showNewsModal && <FullNewsModal news={news} onClose={() => setShowNewsModal(false)} />}
       {lightboxSrc && <ImageLightbox src={lightboxSrc} alt="Foto de galería" onClose={() => setLightboxSrc(null)} />}
+      {selectedMatch && (
+        <MatchDetailModal match={selectedMatch} onClose={() => setSelectedMatch(null)} />
+      )}
     </>
   );
 }
